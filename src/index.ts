@@ -3,7 +3,8 @@ import cors from "cors"
 import { MenuController } from "./Controllers/Menu/MenuController"
 import { OrderController } from "./Controllers/Order/OrderController"
 import { errorHandler } from "./ErrorHandler"
-const port = 3000
+import { port } from "./constanst"
+
 export const App = express()
 
 // Middlewares
