@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { Order, OrderType } from "../../Models/Order"
-import { writeFile, readFile } from "fs/promises"
+import { gistUri, githubToken } from "../../constanst"
 
 export const OrderController = Router()
 const uri = "/order"
@@ -8,7 +8,6 @@ const uri = "/order"
 OrderController.post(uri, async (req, res, next) => {
 	try {
 		const order = req.body as Order
-		console.log(order)
 		validateOrder(order)
 
 		await saveOrder(order)
@@ -40,7 +39,20 @@ const saveOrder = async (order: Order) => {
 	const orders = await getOrders()
 	orders.push(order)
 
-	await writeFile("./src/Controllers/Order/orders.json", JSON.stringify(orders))
+	const response = await fetch(gistUri, {
+		method: "PATCH",
+		headers: {
+			"Authorization": `Bearer ${githubToken}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			files: { "orders.json": { content: JSON.stringify(orders) } },
+		}),
+	})
+	if (!response.ok) {
+		console.log(response.status, response.statusText)
+		throw new Error("Unexpected error on saving Order")
+	}
 }
 
 /**
@@ -48,8 +60,16 @@ const saveOrder = async (order: Order) => {
  * @returns List of all orders
  */
 const getOrders = async () => {
-	const savedOrders = await readFile("./src/Controllers/Order/orders.json", {
-		encoding: "utf8",
-	})
-	return JSON.parse(savedOrders) as Order[]
+	console.log(gistUri)
+
+	const response = await fetch(gistUri)
+	const {
+		files: {
+			"orders.json": { content },
+		},
+	} = await response.json()
+	// const savedOrders = await readFile("./src/Controllers/Order/orders.json", {
+	// 	encoding: "utf8",
+	// })
+	return JSON.parse(content) as Order[]
 }
