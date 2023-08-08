@@ -51,7 +51,7 @@ App.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }))
 // Start Server if not on test env
 if (environment !== "Test") {
 	App.listen(port, () => {
-		console.log(`[Server]: I am running at https://localhost:${port}`)
+		console.log(`[Server]: I am running at http://localhost:${port}`)
 	})
 }
 
