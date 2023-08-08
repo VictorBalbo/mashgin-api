@@ -5,6 +5,57 @@ import { gistUri, githubToken } from "../../constanst"
 export const OrderController = Router()
 const uri = "/order"
 
+/**
+ * @swagger
+ * tags:
+ *   name: Order
+ * /order:
+ *   post:
+ *     summary: Save an order
+ *     tags: [Order]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Order'
+ *     responses:
+ *       200:
+ *         description: Order Saved Sucessfully
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: OK
+ *       400:
+ *         description: Request body was not correctly formated 
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                 message:
+ *                   type: string
+ *             example:
+ *               error: Invalid request object,
+ *               message: Items.quantity Required,
+ *       500:
+ *         description: Unexpected error processing the order
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                 message:
+ *                   type: string
+ *             example:
+ *               error: Internal Server Error,
+ *               message: The server has encontered an unexpected error,
+ */
 OrderController.post(uri, async (req, res, next) => {
 	try {
 		const order = req.body as Order
@@ -17,6 +68,20 @@ OrderController.post(uri, async (req, res, next) => {
 	}
 })
 
+/**
+ * @swagger
+ * /order:
+ *   get:
+ *     summary: Get all orders placed
+ *     tags: [Order]
+ *     responses:
+ *       200:
+ *         description: Got all orders placed
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Order'
+ */
 OrderController.get(uri, async (req, res) => {
 	const orders = await getOrders()
 	res.send(orders)
