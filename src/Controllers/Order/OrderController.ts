@@ -119,7 +119,6 @@ const saveOrder = async (order: Order) => {
 		}),
 	})
 	if (!response.ok) {
-		console.log(response.status, response.statusText)
 		throw new Error("Unexpected error on saving Order")
 	}
 }

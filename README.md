@@ -9,6 +9,7 @@ You can access the deployed projecy on https://mashgin-api.victorbalbo.com/ host
 - `express` for web framework
 - `TypeScript` for variables typing
 - `Zod` for schema validation
+- `Jest` for tests
 
 ## Recommended IDE Setup
 
@@ -42,6 +43,12 @@ npm run dev
 ```
 This will run the webapp locally using port 3000. The app will run on http://localhost:3000/
 
+## Tests
+This project uses `Jest` for unit tests of the controllers and business logic.
+To run the tests just run the command:
+```sh
+npm run test
+```
 
 ## What this API do
 This API uses Swagger to document and present the endpoints.
