@@ -44,47 +44,5 @@ This will run the webapp locally using port 3000. The app will run on http://loc
 
 
 ## What this API do
-This API have 4 endpoints:
-
-### GET /
-This endpoint will just confirm the API is running
-
-### GET /menu
-This endpoint will return the menu.
-
-As this is a just a simple exercise, this endpoint is returning the static values from `menu.json`
-
-### GET /order
-This endpoint will return the list of orders made.
-
-As this is a just a simple exercise, this endpoint is returning the static values from a GIST.
-
-### POST /order
-This endpoint will receive an Order and save it.
-
-As this is a just a simple exercise, this endpoint is saving the Order as a static values in a GIST.
-
-An example of the request body:
-```json
-{
-    "Items": [
-        {
-            "category_id": 1,
-            "id": 3,
-            "image_id": "95d02a230fe050",
-            "name": "Muffin",
-            "price": 1.25,
-            "category_name": "Bakery",
-            "quantity": 1
-        }
-    ],
-    "Total": 1.25,
-    "Payment": {
-        "cardNumber": "1234567890123456",
-        "expirationDate": "2023-08-07T01:08:30.677Z",
-        "cvc": "321",
-        "cardName": "dfgdfg"
-    }
-}
-```
-
+This API uses Swagger to document and present the endpoints.
+Once the API is running locally you can check the docs on the at http://localhost:3000/docs/

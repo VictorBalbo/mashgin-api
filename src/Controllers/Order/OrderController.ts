@@ -125,8 +125,6 @@ const saveOrder = async (order: Order) => {
  * @returns List of all orders
  */
 const getOrders = async () => {
-	console.log(gistUri)
-
 	const response = await fetch(gistUri)
 	const {
 		files: {
