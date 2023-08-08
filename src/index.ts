@@ -1,6 +1,5 @@
 import express from "express"
 import cors from "cors"
-import path from "path"
 import { MenuController } from "./Controllers/Menu/MenuController"
 import { OrderController } from "./Controllers/Order/OrderController"
 import { errorHandler } from "./ErrorHandler"
@@ -21,9 +20,6 @@ App.get("/", (req, res) => {
 
 App.use(MenuController)
 App.use(OrderController)
-
-const ROOT_FOLDER = path.join(__dirname, "..")
-App.use("/public", express.static(path.join(ROOT_FOLDER, "public")))
 
 const options = {
 	definition: {
@@ -50,11 +46,7 @@ const options = {
 	apis: ["./src/Controllers/**/*.ts", "./src/Models/**/*.ts"],
 }
 const specs = swaggerJsdoc(options)
-App.use(
-	"/docs",
-	swaggerUi.serve,
-	swaggerUi.setup(specs, { customJs: "/public/swagger-ui-bundle.js", explorer: true })
-)
+App.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }))
 
 // Start Server
 App.listen(port, () => {
