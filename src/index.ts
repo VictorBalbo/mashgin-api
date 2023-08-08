@@ -3,7 +3,7 @@ import cors from "cors"
 import { MenuController } from "./Controllers/Menu/MenuController"
 import { OrderController } from "./Controllers/Order/OrderController"
 import { errorHandler } from "./ErrorHandler"
-import { port, serverUri } from "./constanst"
+import { port, serverUri, environment } from "./constanst"
 import swaggerJsdoc from "swagger-jsdoc"
 import swaggerUi from "swagger-ui-express"
 
@@ -48,10 +48,12 @@ const options = {
 const specs = swaggerJsdoc(options)
 App.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }))
 
-// Start Server
-App.listen(port, () => {
-	console.log(`[Server]: I am running at https://localhost:${port}`)
-})
+// Start Server if not on test env
+if (environment !== "Test") {
+	App.listen(port, () => {
+		console.log(`[Server]: I am running at https://localhost:${port}`)
+	})
+}
 
 // Error Handlers
 App.use(errorHandler)

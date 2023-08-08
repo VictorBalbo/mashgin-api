@@ -20,9 +20,13 @@ const uri = "/menu"
  *             schema:
  *               $ref: '#/components/schemas/Item'
  */
-MenuController.get(uri, async (req, res) => {
-	const menu = await getMenu()
-	res.json(menu)
+MenuController.get(uri, async (req, res, next) => {
+	try {
+		const menu = await getMenu()
+		res.json(menu)
+	} catch (e) {
+		next(e)
+	}
 })
 
 /**

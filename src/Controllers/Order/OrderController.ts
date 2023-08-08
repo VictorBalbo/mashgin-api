@@ -28,7 +28,7 @@ const uri = "/order"
  *               type: string
  *               example: OK
  *       400:
- *         description: Request body was not correctly formated 
+ *         description: Request body was not correctly formated
  *         content:
  *           application/json:
  *             schema:
@@ -82,9 +82,13 @@ OrderController.post(uri, async (req, res, next) => {
  *             schema:
  *               $ref: '#/components/schemas/Order'
  */
-OrderController.get(uri, async (req, res) => {
-	const orders = await getOrders()
-	res.send(orders)
+OrderController.get(uri, async (req, res, next) => {
+	try {
+		const orders = await getOrders()
+		res.send(orders)
+	} catch (e) {
+		next(e)
+	}
 })
 
 /**
@@ -107,7 +111,7 @@ const saveOrder = async (order: Order) => {
 	const response = await fetch(gistUri, {
 		method: "PATCH",
 		headers: {
-			"Authorization": `Bearer ${githubToken}`,
+			Authorization: `Bearer ${githubToken}`,
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
@@ -126,6 +130,9 @@ const saveOrder = async (order: Order) => {
  */
 const getOrders = async () => {
 	const response = await fetch(gistUri)
+	if (!response.ok) {
+		throw new Error("Unexpected error on getting Orders")
+	}
 	const {
 		files: {
 			"orders.json": { content },
