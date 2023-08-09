@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { Order, OrderType } from "../../Models/Order"
-import { gistUri, githubToken } from "../../constanst"
+import { gistUri, githubToken } from "../../constants"
 
 export const OrderController = Router()
 const uri = "/order"

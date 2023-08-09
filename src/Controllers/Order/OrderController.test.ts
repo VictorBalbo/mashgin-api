@@ -1,7 +1,7 @@
 import Supertest, { type SuperTest, Test } from "supertest"
 import { App } from "../../index"
 import { type Server } from "http"
-import { gistUri, githubToken } from "../../constanst"
+import { gistUri, githubToken } from "../../constants"
 
 describe("Order Endpoints", () => {
 	let TestServer: SuperTest<Test>
@@ -117,6 +117,7 @@ describe("Order Endpoints", () => {
 				ok: false,
 			})
 		) as jest.Mock
+		global.console.error = jest.fn()
 
 		const res = await TestServer.get("/order")
 
@@ -125,6 +126,7 @@ describe("Order Endpoints", () => {
 		expect(res.body).toHaveProperty("error")
 		expect(res.body).toHaveProperty("message")
 		expect(Server.listening).toBe(true)
+		expect(console.error).toHaveBeenCalled()
 	})
 
 	it("POST /order save valid order should succed", async () => {
@@ -200,11 +202,13 @@ describe("Order Endpoints", () => {
 					ok: false,
 				})
 			) as jest.Mock
+		global.console.error = jest.fn()
 
 		const res = await TestServer.post("/order").send(correctOrder)
 
 		expect(res.status).toEqual(500)
 		expect(global.fetch).toHaveBeenCalledTimes(2)
 		expect(Server.listening).toBe(true)
+		expect(console.error).toHaveBeenCalled()
 	})
 })

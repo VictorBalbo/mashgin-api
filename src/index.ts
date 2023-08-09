@@ -3,7 +3,7 @@ import cors from "cors"
 import { MenuController } from "./Controllers/Menu/MenuController"
 import { OrderController } from "./Controllers/Order/OrderController"
 import { errorHandler } from "./ErrorHandler"
-import { port, serverUri, environment } from "./constanst"
+import { port, serverUri, environment } from "./constants"
 import swaggerJsdoc from "swagger-jsdoc"
 import swaggerUi from "swagger-ui-express"
 
@@ -15,7 +15,7 @@ App.use(cors())
 
 // Routes
 App.get("/", (req, res) => {
-	res.send("The API is running")
+	res.send(`The API is running. Check <a href='${serverUri}/docs'>the swagger</a> for more information`)
 })
 
 App.use(MenuController)
