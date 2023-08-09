@@ -16,7 +16,7 @@ App.use(cors())
 // Routes
 App.get("/", (req, res) => {
 	res.send(
-		`The API is running. Check <a href='${serverUri}/docs'>the swagger</a> for more information`
+		"The API is running. Run the API locally and see the docs at <a href='http://localhost:3000/docs'>http://localhost:3000/docs</a>"
 	)
 })
 
