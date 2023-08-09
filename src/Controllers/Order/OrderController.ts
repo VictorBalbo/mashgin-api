@@ -40,7 +40,7 @@ const uri = "/order"
  *                   type: string
  *             example:
  *               error: Invalid request object,
- *               message: Items.quantity Required,
+ *               message: items.quantity Required,
  *       500:
  *         description: Unexpected error processing the order
  *         content:
@@ -137,8 +137,5 @@ const getOrders = async () => {
 			"orders.json": { content },
 		},
 	} = await response.json()
-	// const savedOrders = await readFile("./src/Controllers/Order/orders.json", {
-	// 	encoding: "utf8",
-	// })
 	return JSON.parse(content) as Order[]
 }

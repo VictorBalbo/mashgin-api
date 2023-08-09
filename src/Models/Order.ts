@@ -33,10 +33,10 @@ import { z } from "zod"
  *             quantity: 1
  *         total: 2.0
  *         payment:
- *           cardNumber: "1234567890123456"
+ *           card_number: "1234567890123456"
  *           cvc: "321"
- *           expirationDate: 2023-08-07T01:08:30.677Z
- *           cardName: "Victor Balbo"
+ *           expiration_date: 2023-08-07T01:08:30.677Z
+ *           card_name: "Victor Balbo"
  */
 export interface Order {
 	items: Item[]

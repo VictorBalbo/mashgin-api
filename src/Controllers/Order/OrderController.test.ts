@@ -31,7 +31,7 @@ describe("Order Endpoints", () => {
 			"orders.json": {
 				content:
 					// eslint-disable-next-line quotes
-					'[{"Items":[{"category_id":1,"id":2,"image_id":"808916fd5ddf96","name":"Croissant","price":1,"category_name":"Bakery","quantity":1}],"Total":1,"Payment":{"cardNumber":"1234567890123456","expirationDate":"2023-02-01T03:00:00.000Z","cvc":"123","cardName":"Victor Balbo"}}]',
+					'[{"items":[{"category_id":1,"id":2,"image_id":"808916fd5ddf96","name":"Croissant","price":1,"category_name":"Bakery","quantity":1}],"total":1,"payment":{"card_number":"1234567890123456","expiration_date":"2023-02-01T03:00:00.000Z","cvc":"123","card_name":"Victor Balbo"}}]',
 			},
 		},
 	}
@@ -105,9 +105,9 @@ describe("Order Endpoints", () => {
 		expect(res.status).toEqual(200)
 		expect(res.type).toEqual("application/json")
 		expect(res.body).toHaveLength(1)
-		expect(res.body[0]).toHaveProperty("Items")
-		expect(res.body[0]).toHaveProperty("Total")
-		expect(res.body[0]).toHaveProperty("Payment")
+		expect(res.body[0]).toHaveProperty("items")
+		expect(res.body[0]).toHaveProperty("total")
+		expect(res.body[0]).toHaveProperty("payment")
 	})
 
 	it("GET /order should return error on fail to Gist request", async () => {
