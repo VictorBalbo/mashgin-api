@@ -23,6 +23,6 @@ describe("Server", () => {
 
 		expect(res.status).toEqual(200)
 		expect(res.type).toEqual("text/html")
-		expect(res.text).toBe("The API is running. Check <a href='http://localhost:3000/docs'>the swagger</a> for more information")
+		expect(res.text).toBe("The API is running. Run the API locally and see the docs at <a href='http://localhost:3000/docs'>http://localhost:3000/docs</a>")
 	})
 })

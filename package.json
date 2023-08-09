@@ -15,7 +15,8 @@
     "preset": "ts-jest",
     "automock": false,
     "testEnvironment": "node",
-    "coveragePathIgnorePatterns": ["/node_modules/"]
+    "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"],
+    "modulePathIgnorePatterns": ["/node_modules/", "/dist/"]
   },
   "dependencies": {
     "cors": "^2.8.5",
