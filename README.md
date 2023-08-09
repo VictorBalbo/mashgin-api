@@ -19,7 +19,13 @@ You can access the deployed projecy on https://mashgin-api.victorbalbo.com/ host
 This project is a dependency for the [mashgin-webapp](https://github.com/VictorBalbo/mashgin-webapp). Also the published API can be found at https://mashgin-api.victorbalbo.com/.
 
 ## Project Setup
-This project can run in two ways, using `Docker` or using `Node` commands
+This project can run in two ways, using `Docker` or using `Node` commands.
+
+Before running this API is necessary to set the Token for GIST access. The token was sent on the email.
+You can change the default value for the variable `githubToken` on the file `src/constants.ts`; Or create a `.env` file defining the variable value like the exempla bellow:
+```sh
+GITHUB_TOKEN=TOKEN
+```
 
 ### Docker
 To run this project using Docker you will need to have a `Docker Engine` and `Docker CLI` installed and running.
