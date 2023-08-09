@@ -37,7 +37,7 @@ describe("Order Endpoints", () => {
 	}
 
 	const correctOrder = {
-		Items: [
+		items: [
 			{
 				category_id: 1,
 				id: 2,
@@ -48,17 +48,17 @@ describe("Order Endpoints", () => {
 				quantity: 1,
 			},
 		],
-		Total: 1,
-		Payment: {
-			cardNumber: "1234567890123456",
-			expirationDate: "2023-02-01T03:00:00.000Z",
+		total: 1,
+		payment: {
+			card_number: "1234567890123456",
+			expiration_date: "2023-02-01T03:00:00.000Z",
 			cvc: "123",
-			cardName: "Victor Balbo",
+			card_name: "Victor Balbo",
 		},
 	}
 
 	const wrongOrder = {
-		Items: [
+		items: [
 			{
 				category_id: 1,
 				id: 2,
@@ -68,12 +68,12 @@ describe("Order Endpoints", () => {
 				category_name: "Bakery",
 			},
 		],
-		Total: 1,
-		Payment: {
-			cardNumber: "1234567890123456",
-			expirationDate: "2023-02-01T03:00:00.000Z",
+		total: 1,
+		payment: {
+			card_number: "1234567890123456",
+			expiration_date: "2023-02-01T03:00:00.000Z",
 			cvc: "123",
-			cardName: "Victor Balbo",
+			card_name: "Victor Balbo",
 		},
 	}
 

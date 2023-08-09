@@ -7,40 +7,40 @@ import { z } from "zod"
  *     Payment:
  *       type: object
  *       required:
- *         - cardNumber
+ *         - card_number
  *         - cvc
- *         - expirationDate
- *         - cardName
+ *         - expiration_date
+ *         - card_name
  *       properties:
- *         cardNumber:
+ *         card_number:
  *           type: number
  *           description: Credit card number
  *         cvc:
  *           type: number
  *           description: Credit card verification code
- *         expirationDate:
+ *         expiration_date:
  *           type: string
  *           description: Credit card expiration date
- *         cardName:
+ *         card_name:
  *           type: string
  *           description: Name in the Credit card
  *       example:
- *         cardNumber: 1234567890123456,
+ *         card_number: 1234567890123456,
  *         cvc: 321,
- *         expirationDate: 2023-08-07T01:08:30.677Z,
- *         cardName: Victor Balbo
+ *         expiration_date: 2023-08-07T01:08:30.677Z,
+ *         card_name: Victor Balbo
  */
 export interface Payment {
-	cardNumber: string
+	card_number: string
 	cvc: string
-	expirationDate: string
-	cardName: string
+	expiration_date: string
+	card_name: string
 }
 
 // Model that will be used to validate inputs
 export const PaymentType = z.object({
-	cardNumber: z.string().length(16),
+	card_number: z.string().length(16),
 	cvc: z.string().length(3),
-	expirationDate: z.string().datetime(),
-	cardName: z.string().min(5),
+	expiration_date: z.string().datetime(),
+	card_name: z.string().min(5),
 })

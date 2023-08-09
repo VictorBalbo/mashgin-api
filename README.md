@@ -39,7 +39,7 @@ To run this project using Node you will need to have a `Node 18+` installed. You
 ```sh
 npm install
 ```
-### Compile and Hot-Reload for Development
+#### Compile and Hot-Reload for Development
 ```sh
 npm run dev
 ```
