@@ -22,6 +22,7 @@ This project is a dependency for the [mashgin-webapp](https://github.com/VictorB
 This project can run in two ways, using `Docker` or using `Node` commands
 
 ### Docker
+To run this project using Docker you will need to have a `Docker Engine` and `Docker CLI` installed and running.
 #### Build Image
 ```sh
 docker build . -t mashgin-api
@@ -33,6 +34,7 @@ docker run -p 3000:3000 mashgin-api
 This will run the webapp locally though `Docker` using port 3000. The app will run on http://localhost:3000/
 
 ### Node CLI
+To run this project using Node you will need to have a `Node 18+` installed. You can check your node version using the command `node -v`.
 #### Install Project Dependencies
 ```sh
 npm install
