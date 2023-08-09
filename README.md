@@ -59,5 +59,5 @@ npm run test
 ```
 
 ## What this API do
-This API uses Swagger to document and present the endpoints.
+This API uses Swagger when run locally to document and present the endpoints.
 Once the API is running locally you can check the docs on the at http://localhost:3000/docs/

@@ -14,7 +14,6 @@
 		"semi": ["error", "never"],
 		"quotes": ["error", "double"],
 		"no-mixed-spaces-and-tabs": ["error"],
-		"indent": ["error", "tab"],
-		"@typescript-eslint/ban-ts-comment": "off"
+		"indent": ["error", "tab"]
 	}
 }

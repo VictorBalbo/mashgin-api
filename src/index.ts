@@ -48,20 +48,7 @@ const options = {
 	apis: ["./src/Controllers/**/*.ts", "./src/Models/**/*.ts"],
 }
 const specs = swaggerJsdoc(options)
-App.use(
-	"/docs",
-	swaggerUi.serve,
-	// @ts-ignore: Swagger Types incorrectly typed customJs as string not allowing an array, for this reason ignore next error
-	swaggerUi.setup(specs, {
-		explorer: true,
-		customCssUrl:
-			"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.3.1/swagger-ui.min.css",
-		customJs: [
-			"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.3.1/swagger-ui-bundle.js",
-			"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.3.1/swagger-ui-standalone-preset.js",
-		],
-	})
-)
+App.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }))
 
 // Start Server if not on test env
 if (environment !== "Test") {
